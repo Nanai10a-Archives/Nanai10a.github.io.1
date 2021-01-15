@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "JF_Dot_K12";
+  font-style: normal;
+  font-weight: 400;
+  src: local("JF_Dot_K12"), url("/JF-Dot-K12.ttf") format("truetype");
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  background: rgba(#005E15, 0.2);
+
+  font-family: "JF_Dot_K12", sans-serif;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}

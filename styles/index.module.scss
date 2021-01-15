@@ -1,0 +1,121 @@
+// TODO: stylelintだのなんだのできれいに整列させて
+
+.header {
+  display: table;
+
+  & > .logo {
+    width: 100vw;
+    height: 14vmin;
+    position: absolute;
+    display: table-cell;
+    vertical-align: middle;
+
+    object-fit: contain;
+    image-rendering: pixelated;
+  }
+
+  & > .menu_container {
+    $menu_width: 26vmax; // TODO: font-size基準に変更
+
+    width: calc(#{$menu_width} * 0.2);
+    height: 100vh;
+    max-width: 100vw;
+    min-width: 0;
+    position: absolute;
+    overflow: visible;
+
+    background: rgba(bisque, 0.4);
+
+    $menu_font_size: 24px; // TODO: 調整して
+    font-size: $menu_font_size;
+    max-font-size: $menu_width;
+
+    & > .menu_drawer {
+      width: $menu_width;
+      height: 100vh;
+      transition: all 0.6s ease;
+      position: relative;
+      left: -$menu_width;
+
+      background-color: rgba(brown, 0.4);
+
+      & > .menu_title {
+        @keyframes blink {
+          0% {
+            opacity: 1;
+          }
+          89% {
+            opacity: 1;
+          }
+          90% {
+            opacity: 0;
+          }
+        }
+
+        animation: blink 1.0s ease-in-out infinite alternate;
+      }
+
+      @mixin menu_text_template {
+        height: $menu_font_size;
+        width: max-content;
+        top: 2vh;
+        left: 2vw;
+        display: block;
+        position: relative;
+        color: #005E15;
+      }
+
+      & > a {
+        @include menu_text_template;
+        text-decoration: none;
+        padding: 0.4em 0.4em 0 0.4em;
+
+        &::after {
+          position: absolute;
+          bottom: -0.08em;
+          left: 0;
+          content: "";
+          width: 100%;
+          height: 0.08em;
+          background: #005E15;
+          transform: scale(0, 1);
+          transform-origin: right top;
+          transition: transform .3s;
+        }
+
+        &:hover::after {
+          transform-origin: left top;
+          transform: scale(1, 1);
+        }
+      }
+    }
+
+    &:hover {
+      & > .menu_drawer {
+        left: 0;
+      }
+    }
+  }
+}
+
+$width: 20vw;
+$height: 100vh;
+
+.container {
+  width: $width;
+  height: $height;
+  overflow: visible;
+}
+
+.drawer {
+  width: $width;
+  height: $height;
+  background-color: #000000;
+  transition: all 0.6s ease;
+  position: relative;
+  left: -$width;
+}
+
+.container:hover .drawer {
+  left: 0;
+}
