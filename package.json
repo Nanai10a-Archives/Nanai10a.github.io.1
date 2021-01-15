@@ -21,6 +21,7 @@
     }
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
     "fastify": "^3.9.2",
     "next": "^10.0.5",
     "pino-pretty": "^4.3.0",
